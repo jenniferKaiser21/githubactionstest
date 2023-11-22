@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
         favorite-food:
-            description: 'Favorite Food'
+            description: "Favorite Food"
             required: true
         favorite-drink:
             description: "Favorite Drink"
@@ -30,7 +30,7 @@ jobs:
           python-version: '3.x'
 
       - name: Run Python Script
-        run: python .github/scripts/display_favorites.py "${{ inputs.favorite-food }}", "${{ inputs.favorite-drink }}"
+        run: python .github/scripts/display_favorites.py "${{ inputs.favorite-food }}" "${{ inputs.favorite-drink }}"
         shell: bash
     
 
