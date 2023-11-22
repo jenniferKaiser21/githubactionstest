@@ -1,0 +1,38 @@
+name: Parameter Workflow
+
+on: 
+  workflow_dispatch:
+    inputs:
+        favorite-food:
+            description: 'Favorite Food'
+            required: true
+        favorite-drink:
+            description: "Favorite Drink"
+            required: true
+
+jobs:
+  display-runner-name-and-trigger-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display Runner Name
+        run: echo "Runner Name ${{ runner.name }}"
+
+      - name: Display Runner OS
+        run: echo "Runner OS ${{ runner.os }}"
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Run Python Script
+        run: python .github/scripts/display_favorites.py "${{ inputs.favorite-food }}", "${{ inputs.favorite-drink }}"
+        shell: bash
+    
+
+
+          
